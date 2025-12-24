@@ -1,0 +1,11 @@
+﻿{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Run Yjy202452320130",
+      "request": "launch",
+      "mainClass": "Yjy202452320130"
+    }
+  ]
+}
