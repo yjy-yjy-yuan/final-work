@@ -1,67 +1,168 @@
 # Java 期末大作业 - 综合应用系统
 
-这是一个基于 Java Swing 和 MySQL 的综合应用系统，包含用户登录注册功能和一个美观的计算器应用。
+这是一个基于 Java Swing 和 MySQL 的综合应用系统，包含用户登录注册功能、现代化主页面和美观的计算器应用。
 
 ## 👤 作者信息
 - **姓名**: Yuan Jiaying (袁佳颖)
 - **学号**: 202452320130
-- **班级**: (请在代码中补充班级信息)
+- **班级**: 24智科1班
 
 ## 🚀 功能特性
 
-### 1. 用户管理系统 (Login System)
-- **登录/注册**: 支持用户注册新账号和登录。
-- **数据库集成**: 使用 MySQL 存储用户信息。
-- **自动初始化**: 程序启动时会自动检测并创建数据库 `final_work` 和数据表 `users_202452320130`。
-- **界面**: 包含登录窗口 (`LoginFrame`) 和注册对话框 (`RegisterDialog`)。
+### 1. 用户管理系统
+- **登录功能**: 用户名密码验证，实时时钟显示
+- **注册功能**: 新用户注册，密码确认验证
+- **数据库集成**: 使用 MySQL 存储用户信息
+- **自动初始化**: 程序启动时自动创建数据库和数据表
 
-### 2. 莫兰迪色系计算器 (Calculator)
-- **UI 设计**: 采用莫兰迪蓝紫渐变背景，圆角按钮设计，界面现代美观。
-- **功能**: 支持基本的数学运算。
-- **入口**: 登录成功后可进入主界面启动计算器。
+### 2. 现代化主页面
+登录成功后显示三个功能模块卡片：
+
+#### 📋 个人信息模块
+- 显示学生姓名
+- 显示学号
+- 显示班级信息
+
+#### 🧮 计算器模块
+- 点击按钮打开计算器
+- 独立窗口运行
+- 保留莫兰迪配色风格
+
+#### 👤 用户状态模块
+- 绿色指示灯显示登录状态（已登录）
+- 显示当前登录用户名
+- 显示数据库连接状态
+
+### 3. 莫兰迪色系计算器
+- **UI 设计**: 采用莫兰迪蓝紫渐变背景
+- **圆角设计**: 现代化圆角按钮和显示框
+- **渐变效果**: 按钮悬停时颜色渐变
+- **基本运算**: 支持 +、-、×、÷ 四则运算
+- **括号支持**: 支持括号运算（界面已预留）
+- **删除功能**: 支持单字符删除（DEL）和全部清除（C）
+
+## 🎨 设计特色
+
+- **统一风格**: 全局使用莫兰迪色系，视觉和谐统一
+- **简洁布局**: 避免复杂嵌套，代码清晰易读
+- **详细注释**: 所有关键代码都有中文注释说明
+- **模块化设计**: 每个功能独立封装，便于维护
 
 ## 🛠️ 技术栈
 - **编程语言**: Java (JDK 8+)
 - **图形界面**: Java Swing (AWT/Swing)
 - **数据库**: MySQL 8.0+
-- **数据库连接**: JDBC (MySQL Connector/J)
+- **数据库连接**: JDBC (MySQL Connector/J 8.4.0)
 
 ## ⚙️ 环境配置与运行
 
 ### 前置要求
-1. 安装 Java 开发环境 (JDK)。
-2. 安装 MySQL 数据库。
-3. 确保项目 `lib` 目录下包含 MySQL JDBC 驱动 jar 包 (例如 `mysql-connector-j-8.x.x.jar`) 并已添加到构建路径。
+1. 安装 Java 开发环境 (JDK 8 或更高版本)
+2. 安装 MySQL 数据库（推荐 8.0+）
+3. 确保项目 `lib` 目录下包含 MySQL JDBC 驱动（已包含 `mysql-connector-j-8.4.0.jar`）
 
 ### 数据库配置
-项目默认使用以下数据库配置，请确保你的本地 MySQL 环境匹配，或在 `src/Yjy202452320130.java` 文件中修改配置：
+项目默认使用以下数据库配置，可在 `src/Yjy202452320130.java` 文件中修改：
 
 ```java
-private static final String DB_HOST = "localhost";
-    private static final String DB_PORT = "3306";
-    private static final String DB_NAME = "final_work";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "yjy200603"; // 请修改为你自己的数据库密码
+private static final String DB_HOST = "localhost";      // 主机地址
+private static final String DB_PORT = "3306";           // 端口号
+private static final String DB_NAME = "final_work";     // 数据库名
+private static final String DB_USER = "root";           // 用户名
+private static final String DB_PASSWORD = "yjy200603";  // 密码（请修改为你的密码）
 ```
 
-### 如何运行
-1. **编译**: 确保所有 `.java` 文件已编译。
-2. **运行**: 运行主类 `Yjy202452320130` 或 `Login202452320130`。
-   - 程序会自动连接数据库。
-   - 如果数据库连接成功，将显示登录界面。
+### 如何运行（Windows 系统）
+
+#### 编译和运行步骤
+
+**1. 编译项目**
+```powershell
+javac -encoding UTF-8 -d bin -cp "lib\*" src\Yjy202452320130.java src\Calculate202452320130.java
+```
+
+**2. 运行程序**
+```powershell
+java -cp "bin;lib\*" Yjy202452320130
+```
+
+#### 使用说明
+1. 程序启动后会自动连接 MySQL 数据库
+2. 首次运行会自动创建数据库 `final_work` 和用户表 `users_202452320130`
+3. 显示登录界面，可以：
+   - 点击"Register"注册新用户
+   - 输入用户名和密码后点击"Login"登录
+4. 登录成功后进入主页面，展示三个功能模块
+5. 点击"打开计算器"按钮可以使用计算器功能
+6. 点击"登出"返回登录界面，点击"退出"关闭程序
 
 ## 📂 项目结构
 ```
 final-work/
 ├── bin/                 # 编译后的 .class 文件
-├── lib/                 # 依赖库 (如 MySQL 驱动)
-├── src/                 # 源代码
-│   ├── Calculate202452320130.java  # 计算器实现
-│   ├── Login202452320130.java      # 登录入口封装
-│   └── Yjy202452320130.java        # 主程序、数据库连接、登录逻辑
+├── lib/                 # 依赖库
+│   └── mysql-connector-j-8.4.0.jar  # MySQL JDBC 驱动
+├── src/                 # 源代码目录
+│   ├── Yjy202452320130.java         # 主程序（登录、注册、主页面）
+│   └── Calculate202452320130.java   # 计算器实现
 └── README.md            # 项目说明文档
 ```
 
+## 📝 代码文件说明
+
+### Yjy202452320130.java（主程序）
+- **类说明**: 系统主入口和核心功能实现
+- **内部类**:
+  - `LoginFrame`: 登录界面，包含实时时钟显示
+  - `RegisterDialog`: 注册对话框
+  - `MainFrame`: 主页面，包含三个功能卡片模块
+- **核心方法**:
+  - `main()`: 程序入口
+  - `getConnection()`: 获取数据库连接
+  - `ensureUsersTable()`: 初始化数据库和表
+
+### Calculate202452320130.java（计算器）
+- **类说明**: 莫兰迪风格计算器
+- **内部类**:
+  - `RoundedButton`: 自定义圆角按钮
+  - `RoundedBorder`: 自定义圆角边框
+- **核心方法**:
+  - `open()`: 打开计算器窗口
+  - `createFrame()`: 创建计算器界面
+
+## 🗄️ 数据库结构
+
+### 数据库名称
+`final_work`
+
+### 用户表：users_202452320130
+| 字段名 | 类型 | 说明 |
+|--------|------|------|
+| id | INT | 主键，自增 |
+| username | VARCHAR(50) | 用户名，唯一 |
+| password | VARCHAR(100) | 密码 |
+| created_at | TIMESTAMP | 创建时间 |
+
 ## 📝 注意事项
-- 首次运行时，请确保 MySQL 服务已启动。
-- 如果遇到 `ClassNotFoundException`，请检查 JDBC 驱动是否正确导入。
+1. **首次运行**: 请确保 MySQL 服务已启动
+2. **数据库密码**: 记得修改代码中的数据库密码为你本地 MySQL 的密码
+3. **字符编码**: 编译时需要指定 UTF-8 编码（`-encoding UTF-8`）
+4. **JDBC 驱动**: 如果遇到 `ClassNotFoundException`，请检查 lib 目录下是否有 MySQL 驱动
+5. **端口占用**: 确保 MySQL 运行在 3306 端口（或修改配置）
+
+## 🔧 常见问题
+
+**Q: 运行时提示找不到主类？**
+A: 确保编译时使用了 `-d bin` 参数，运行时使用了正确的 classpath。
+
+**Q: 数据库连接失败？**
+A: 检查：
+   - MySQL 服务是否启动
+   - 用户名密码是否正确
+   - 端口号是否为 3306
+
+**Q: 界面显示乱码？**
+A: 编译时添加 `-encoding UTF-8` 参数。
+
+## 📄 许可证
+本项目为教学作业项目，仅供学习交流使用。
